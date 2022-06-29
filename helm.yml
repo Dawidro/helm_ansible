@@ -1,0 +1,35 @@
+---
+- hosts: "master"
+  become_method: sudo
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: add Helm apt-key
+      apt_key:
+        url: https://baltocdn.com/helm/signing.asc
+        state: present
+
+    - name: add Helm repository apt repository
+      apt_repository:
+        repo: deb https://baltocdn.com/helm/stable/debian/ all main
+        state: present
+        filename: helm-stable-debian
+        update_cache: yes
+
+    - name: Install helm binaries
+      apt:
+        name: "helm"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - helm
+
+- hosts: "master"
+  vars:
+    helm_chart_url: "https://charts.bitnami.com/bitnami"
+  tasks:
+    - name: add Helm repository to k8s
+      kubernetes.core.helm_repository:
+        name: bitnami
+        repo_url: "{{ helm_chart_url }}"

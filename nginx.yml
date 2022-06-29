@@ -1,0 +1,9 @@
+---
+- hosts: "master"
+  tasks:
+   - name: Install Nginx Chart
+     kubernetes.core.helm:
+       name: nginx
+       namespace: testing
+       create_namespace: true
+       chart_ref: bitnami/nginx
