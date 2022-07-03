@@ -46,5 +46,5 @@
         repo_url: "{{ helm_chart_openelb }}"
     - name: add Helm repository for Nginx
       kubernetes.core.helm_repository:
-        name: ingrerss-nginx
+        name: ingress-nginx
         repo_url: "{{ helm_chart_nginx }}"
