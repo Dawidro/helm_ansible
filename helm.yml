@@ -30,7 +30,7 @@
     helm_chart_bitnami: "https://charts.bitnami.com/bitnami"
     helm_chart_prometheus: "https://prometheus-community.github.io/helm-charts"
     helm_chart_openelb: "https://charts.kubesphere.io/test"
-    helm_chart_nginx: "https://helm.nginx.com/stable"
+    helm_chart_nginx: "https://kubernetes.github.io/ingress-nginx"
   tasks:
     - name: add Helm repository to k8s
       kubernetes.core.helm_repository:
@@ -46,5 +46,5 @@
         repo_url: "{{ helm_chart_openelb }}"
     - name: add Helm repository for Nginx
       kubernetes.core.helm_repository:
-        name: nginx-stable
+        name: ingrerss-nginx
         repo_url: "{{ helm_chart_nginx }}"
