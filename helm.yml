@@ -37,9 +37,9 @@
         repo_url: "{{ helm_chart_bitnami }}"
     - name: add Helm repository for Prometheus
       kubernetes.core.helm_repository:
-        name: bitnami
+        name: prometheus
         repo_url: "{{ helm_chart_prometheus }}"
     - name: add Helm repository for OpenELB
       kubernetes.core.helm_repository:
-        name: bitnami
+        name: openelb
         repo_url: "{{ helm_chart_openelb }}"
