@@ -27,8 +27,8 @@
 
 - hosts: "master"
   vars:
-    helm_chart_prometheus: "prometheus prometheus-community/kube-prometheus-stack"
     helm_chart_bitnami: "https://charts.bitnami.com/bitnami"
+    helm_chart_prometheus: "https://prometheus-community.github.io/helm-charts"
     helm_chart_openelb: "https://charts.kubesphere.io/test"
   tasks:
     - name: add Helm repository to k8s
@@ -37,7 +37,7 @@
         repo_url: "{{ helm_chart_bitnami }}"
     - name: add Helm repository for Prometheus
       kubernetes.core.helm_repository:
-        name: prometheus
+        name: prometheus-community
         repo_url: "{{ helm_chart_prometheus }}"
     - name: add Helm repository for OpenELB
       kubernetes.core.helm_repository:
