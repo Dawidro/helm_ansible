@@ -31,6 +31,7 @@
     helm_chart_prometheus: "https://prometheus-community.github.io/helm-charts"
     helm_chart_openelb: "https://charts.kubesphere.io/test"
     helm_chart_nginx: "https://kubernetes.github.io/ingress-nginx"
+    helm_chart_metallb: "https://metallb.github.io/metallb"
   tasks:
     - name: add Helm repository to k8s
       kubernetes.core.helm_repository:
@@ -46,5 +47,9 @@
         repo_url: "{{ helm_chart_openelb }}"
     - name: add Helm repository for Nginx
       kubernetes.core.helm_repository:
-        name: ingress-nginx
+        name: nginx_ingress
         repo_url: "{{ helm_chart_nginx }}"
+    - name: add Helm repository for MetalLB
+      kubernetes.core.helm_repository:
+        name: metallb
+        repo_url: "{{ helm_chart_metallb }}"
