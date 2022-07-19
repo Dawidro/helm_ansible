@@ -6,4 +6,4 @@
        name: metallb
        namespace: metallb-system
        create_namespace: true
-       chart_ref: metallb/metlalb
+       chart_ref: metallb/metallb
